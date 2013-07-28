@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "MBLogging"
+  s.name         = "MBImageConstants"
   s.version      = "0.1.0"
   s.summary      = "These macros allows you to show logs on number of levels: info, debug, warning, error, fatal, trace."
   s.homepage     = "https://github.com/bananita/MBImageConstants"
