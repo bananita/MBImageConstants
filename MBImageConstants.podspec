@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
   
   s.source       = { :git => "https://github.com/bananita/MBImageConstants.git" }
-  s.source_files = '*.{h,rb}'
+  s.source_files = '*.{h}'
 
-  #s.resources = '*.rb'
+  s.resources = '*.rb'
 end
