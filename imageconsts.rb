@@ -1,6 +1,37 @@
+#
+#  imageconsts.rb
+#  MBImageConstants
+#
+#  Created by Michal Banasiak on 27.07.2013.
+#  Copyright (c) 2013 Michal Banasiak. All rights reserved.
+#  https://github.com/bananita
+#
+
 #!/usr/bin/env ruby
 
 root = ARGV[0]
+
+class Image
+    attr_accessor :normal, :retina
+end
+
+hash = {}
+
+Dir.glob("#{root}/**/*.png") do |file|
+    basename = File.basename(file, ".png")
+    basenameWithoutAtTwo = basename.chomp("@2x")
+    
+    key = basenameWithoutAtTwo
+    
+    hash[key] = Image.new if hash[key].nil?
+
+    if basename.include? "@2x" then
+        hash[key].retina = :true
+    else
+        hash[key].normal = :true
+    end
+    
+end
 
 $stdout.reopen("#{root}/Pods/MBImageConstants/MBImageConstants.h",'w')
 
@@ -22,42 +53,23 @@ puts " * It should not be modified by hand."
 puts " */"
 puts
 
-class Image
-    attr_accessor :normal, :retina
-end
-
-hash = {}
-
-Dir.glob("#{root}/**/*.png") do |file|
-    basename = File.basename(file, ".png")
-    basenameWithoutAtTwo = basename.chomp("@2x")
-    
-    key = basenameWithoutAtTwo
-    
-    if hash[key].nil? then
-        hash[key] = Image.new
-    end
-    
-    if basename.include? "@2x" then
-        hash[key].retina = :true
-    else
-        hash[key].normal = :true
-    end
-    
-end
-
 hash.each_key do |key|
     define = key.gsub('-', '_')
-    
-    normal = ""
-    retina = ""
-    
+        
     normal = "Normal" if hash[key].normal
     retina = "Retina" if hash[key].retina
     
-    puts "// #{key}: #{normal} #{retina}"
+    if (normal.nil?)
+        STDERR.puts "warning: MBImageConstants: missing normal graphics for image #{key}"
+    end
     
-    puts "#define image#{define} @\"#{key}\""
+    if (retina.nil?)
+        STDERR.puts "warning: MBImageConstants: missing retina graphics for image #{key}"
+    end
+    
+    puts "// #{key}: #{normal} #{retina}"
+    puts "#define image_#{define} @\"#{key}\""
+    puts
 end
 
 puts
