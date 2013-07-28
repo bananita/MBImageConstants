@@ -68,7 +68,7 @@ hash.each_key do |key|
     end
     
     puts "// #{key}: #{normal} #{retina}"
-    puts "#define image_#{define} @\"#{key}\""
+    puts "#define image_#{define} @\"#{key}.png\""
     puts
 end
 
