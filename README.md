@@ -9,7 +9,7 @@ Installation
 ------------
 Installation is divided at three steps. First, add proper line to your project's Podfile:
 
-    pod 'MBImageConstants'
+    pod 'MBImageConstants', :git => 'https://github.com/bananita/MBImageConstants.git', :tag => '0.1.0'
 
 Next, you have to add a new phase to your Project's Build Phases between Check Pods Manifest.lock and Compile Sources.
 It is simple invocation of ruby with MBImageConstants script:
