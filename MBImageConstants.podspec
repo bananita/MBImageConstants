@@ -1,17 +1,14 @@
 Pod::Spec.new do |s|
   s.name         = "MBImageConstants"
-  s.version      = "0.1.0"
-  s.summary      = "These macros allows you to show logs on number of levels: info, debug, warning, error, fatal, trace."
+  s.version      = "0.2.0"
+  s.platform     = :ios, '6.1'
+  s.summary      = "MBImageConstants is a simple XCode 5 precompile script that generates precompiler defines corresponding to image sets found in a project's assets."
   s.homepage     = "https://github.com/bananita/MBImageConstants"
   s.license      = { :type => 'MIT', :file => 'LICENSE'}
   s.author       = { "Michał Banasiak" => "m.banasiak@icloud.com" }
-
+  s.description  = "MBImageConstants is a simple XCode 5 precompile script that generates precompiler defines corresponding to image sets found in a project's assets."
   s.requires_arc = false
-  s.ios.deployment_target = '5.0'
-  s.osx.deployment_target = '10.7'
-  
-  s.source       = { :git => "https://github.com/bananita/MBImageConstants.git" }
+  s.source       = { :git => "https://github.com/bananita/MBImageConstants.git", :tag => s.version.to_s }
   s.source_files = '*.{h}'
-
   s.resources = '*.rb'
 end
