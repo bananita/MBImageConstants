@@ -30,6 +30,12 @@ Third, the last step is inserting import to your application prefix file (.pch):
 
 That's all! You can build your project now.
 
+Using
+-----
+Constants for all image sets will be created with 'image_' prefix. For example:
+
+    UIImage* background = [UIImage imageNamed:image_Background];
+
 Contributing
 ------------
 If you'd like to contribute code, fork the project at [github](https://github.com/bananita/mbimageconstants), 
