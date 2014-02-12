@@ -1,15 +1,19 @@
 MBImageConstants
 ================
 
-MBImageConstants is a simple XCode precompile script that generates precompiler defines 
-corresponding to .png images found in a project. 
+MBImageConstants is a simple XCode 5 precompile script that generates precompiler defines 
+corresponding to image sets found in a project's assets. 
 It allows autocompletion for image names and protects against typos.
+
+Requirements
+------------
+Script works with XCode 5 and project using Images.xcassets to store images. It is a Ruby script so it needs Ruby installed on the build machine.
 
 Installation
 ------------
 Installation is divided at three steps. First, add proper line to your project's Podfile:
 
-    pod 'MBImageConstants', :git => 'https://github.com/bananita/MBImageConstants.git', :tag => '0.1.0'
+    pod 'MBImageConstants', :git => 'https://github.com/bananita/MBImageConstants.git', :tag => '0.2.0'
 
 Next, you have to add a new phase to your Project's Build Phases between Check Pods Manifest.lock and Compile Sources.
 It is simple invocation of ruby with MBImageConstants script:
